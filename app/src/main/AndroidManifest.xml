@@ -10,10 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KotlinToDo">
         <activity
-            android:name=".EditActivity"
-            android:label="@string/edit_activity_name"
-            ></activity>
-        <activity
             android:name=".MainActivity"
             android:label="@string/main_activity_name"
             android:theme="@style/SplashTheme">
@@ -21,7 +17,9 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>]
+        </activity>
+        <activity
+            android:name=".EditActivity"></activity>
     </application>
 
 </manifest>

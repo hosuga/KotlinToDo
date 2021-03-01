@@ -14,11 +14,10 @@ class MainActivity : AppCompatActivity() {
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
 
-        fab.setOnClickListener (object: View.OnClickListener {
-            override fun onClick(v: View?) {
-                val intent = Intent(this@MainActivity, EditActivity::class.java)
-                startActivity(intent)
-            }
-        })
+        fab.setOnClickListener {
+            val intent = Intent(application, EditActivity::class.java)
+            intent.putExtra("title", "追加")
+            startActivity(intent)
+        }
     }
 }
