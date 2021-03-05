@@ -3,7 +3,7 @@ package com.example.kotlintodo
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.kotlintodo.const.Mode
+import com.example.kotlintodo.const.EditorMode
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
@@ -12,11 +12,11 @@ class MainActivity : AppCompatActivity() {
         setTheme(R.style.AppTheme)
         setContentView(R.layout.activity_main)
 
-        val createButton = findViewById<FloatingActionButton>(R.id.create_button)
+        val addButton = findViewById<FloatingActionButton>(R.id.add_button)
 
-        createButton.setOnClickListener {
+        addButton.setOnClickListener {
             val intent = Intent(application, EditActivity::class.java)
-            intent.putExtra("mode", Mode.CREATE)
+            intent.putExtra("mode", EditorMode.CREATE)
             startActivity(intent)
         }
     }
