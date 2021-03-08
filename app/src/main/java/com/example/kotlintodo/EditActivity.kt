@@ -10,14 +10,14 @@ class EditActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val intent = intent
-        val editorMode = intent.getSerializableExtra("mode") as EditorMode
+        val editorMode = intent.getSerializableExtra("editor_mode") as EditorMode
 
         setTheme(R.style.AppTheme)
         setTitle(editorMode.value)
         setContentView(R.layout.activity_edit)
 
-        val saveButton = findViewById<Button>(R.id.save_button)
-        val cancelButton = findViewById<Button>(R.id.cancel_button)
+        val saveButton = findViewById<Button>(R.id.saveButton)
+        val cancelButton = findViewById<Button>(R.id.cancelButton)
 
         saveButton.setOnClickListener {
             finish()
