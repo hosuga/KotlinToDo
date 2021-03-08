@@ -3,7 +3,7 @@ package com.example.kotlintodo
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.example.kotlintodo.const.EditorMode
+import com.example.kotlintodo.model.EditorMode
 
 class EditActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

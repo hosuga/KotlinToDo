@@ -1,4 +1,4 @@
-package com.example.kotlintodo.const
+package com.example.kotlintodo.model
 
 enum class EditorMode(val value: String) {
     EDIT("編集"),

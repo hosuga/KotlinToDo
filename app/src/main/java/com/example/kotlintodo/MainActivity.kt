@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kotlintodo.const.EditorMode
+import com.example.kotlintodo.model.EditorMode
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         val addButton = findViewById<FloatingActionButton>(R.id.addButton)
 
         // dummyDate
-        val todos = Array<String>(20){"テキスト$it"}
+        val todos = Array<String>(50){"テキスト$it"}
 
         list.layoutManager = LinearLayoutManager(this)
         list.adapter = ListAdapter(todos)
