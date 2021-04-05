@@ -8,12 +8,11 @@ import java.util.*
 
 open class ToDo : RealmObject() {
     @PrimaryKey
-    open var id: Long = 0
+    var id: Long = 0
 
     @Required
-    open var title: String = ""
+    var title: String = ""
 
     @Index
-    open var created: Date = Date(System.currentTimeMillis())
+    var created: Date = Date()
 }
-

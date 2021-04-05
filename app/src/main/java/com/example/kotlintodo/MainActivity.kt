@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlintodo.model.EditorMode
-import com.example.kotlintodo.realm.ToDo
+import com.example.kotlintodo.realm.ToDoAccessor
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
@@ -22,8 +22,9 @@ class MainActivity : AppCompatActivity() {
 
         // dummyDate
         val todos = Array<String>(50){"Title$it"}
-        val test = ToDo().read()
 
+//        ToDoAccessor().create("test01")
+        val test = ToDoAccessor().getAll()
         Log.d("todos", test.toString())
 
 
