@@ -20,18 +20,16 @@ class MainActivity : AppCompatActivity() {
         val list = findViewById<RecyclerView>(R.id.list)
         val addButton = findViewById<FloatingActionButton>(R.id.addButton)
 
-        // dummyDate
-        val todos = Array<String>(50){"Title$it"}
-
 //        ToDoAccessor().create("test01")
-        val test = ToDoAccessor().getAll()
-        Log.d("todos", test.toString())
+
+        val todos = ToDoAccessor().getAll()
+        Log.d("todos", todos.toString())
 
 
         val separateLine = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
 
         list.layoutManager = LinearLayoutManager(this)
-        list.adapter = ListAdapter(todos)
+        list.adapter = ToDoListAdapter(todos)
         list.setHasFixedSize(true)
         list.addItemDecoration(separateLine)
 

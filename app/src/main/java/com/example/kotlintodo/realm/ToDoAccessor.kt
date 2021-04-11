@@ -1,6 +1,7 @@
 package com.example.kotlintodo.realm
 
 import com.example.kotlintodo.db.ToDo
+import io.realm.OrderedRealmCollection
 import io.realm.Realm
 import io.realm.RealmResults
 import io.realm.kotlin.createObject
@@ -24,14 +25,15 @@ class ToDoAccessor {
 
 
     fun create(title:String) {
+        realm.beginTransaction()
         var todo = realm.createObject<ToDo>(generateId())
         todo.title = title
-        realm.copyToRealm(todo)
+        realm.commitTransaction()
     }
 
 
-    fun getAll(): RealmResults<ToDo>? {
-        val todos = realm.where<ToDo>().findAll()
+    fun getAll(): OrderedRealmCollection<ToDo> {
+        val todos = realm.where<ToDo>().sort("created").findAll()
         return todos
     }
 
