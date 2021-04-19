@@ -20,10 +20,37 @@ class MainActivity : AppCompatActivity() {
         val list = findViewById<RecyclerView>(R.id.list)
         val addButton = findViewById<FloatingActionButton>(R.id.addButton)
 
-//        ToDoAccessor().create("test01")
+        val toDoAccessor = ToDoAccessor()
 
-        val todos = ToDoAccessor().getAll()
+//         仮データ作成
+//         for (i in 1..20) ToDoAccessor.create("test${i}")
+
+//         全件取得
+        val todos = toDoAccessor.getAll()
         Log.d("todos", todos.toString())
+
+//         id=1 更新
+//        ToDoAccessor.update(1, "update test")
+//        Log.d("updated todo", ToDoAccessor.find(1).toString())
+
+//         id=20 削除
+//         ToDoAccessor.delete(20)
+//         Log.d("todos after deleted 20", ToDoAccessor.getAll().toString())
+
+//         存在しない id=21 更新
+//         ToDoAccessor.update(21, "no data update test")
+//         Log.d("todos after no data updated", ToDoAccessor.getAll().toString())
+
+//         存在しない id=21 削除
+//         ToDoAccessor.delete(21)
+//         Log.d("todos after no data updated", ToDoAccessor.getAll().toString())
+
+//         存在しない id=21 取得
+//         ToDoAccessor.find(21)
+
+//         存在する id=1 登録
+//         テスト前にToDoAccessor.createを要修正
+//         ToDoAccessor.create("create existed id data")
 
 
         val separateLine = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
