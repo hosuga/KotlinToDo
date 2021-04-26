@@ -6,24 +6,30 @@ import io.realm.OrderedRealmCollection
 import io.realm.Realm
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
+import java.lang.Exception
 
 class ToDoAccessor {
     var realm = Realm.getDefaultInstance()
 
-    var nextId: Long = 1
+    var nextId: Long = 0
         get() {
-            val lastId: Number? = realm.where<ToDo>().max("id")
-
-            return if(lastId != null) { lastId.toLong() + 1 } else { 1 }
+            return nextId + 1
 
         }
 
-    fun create(title: String) {
-        realm.beginTransaction()
-//        var todo = realm.createObject<ToDo>(1) // test
-        var todo = realm.createObject<ToDo>(nextId)
-        todo.title = title
-        realm.commitTransaction()
+    fun create(title: String): Boolean {
+        try {
+            realm.beginTransaction()
+//            var todo = realm.createObject<ToDo>(1) // test
+            var todo = realm.createObject<ToDo>(nextId)
+            todo.title = title
+            realm.commitTransaction()
+        } catch (e: Exception) {
+            Log.e(this.toString(), e.toString())
+            return false
+        }
+
+        return true
     }
 
 
@@ -37,15 +43,29 @@ class ToDoAccessor {
 
     fun update(id: Long, title: String) {
         realm.beginTransaction()
+
         val todo: ToDo? = find(id)
-        todo?.title = title
+
+        if (todo != null) {
+            todo.title = title
+        } else {
+            Log.d(this.toString(), "failed to update nul")
+        }
+
         realm.commitTransaction()
     }
 
     fun delete(id: Long) {
         realm.beginTransaction()
+
         val todo: ToDo? = find(id)
-        todo?.deleteFromRealm()
+
+        if (todo != null) {
+            todo.deleteFromRealm()
+        } else {
+            Log.d(this.toString(), "failed to delete nul")
+        }
+
         realm.commitTransaction()
     }
 
