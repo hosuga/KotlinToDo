@@ -9,6 +9,15 @@ import io.realm.kotlin.where
 import java.lang.Exception
 
 class ToDoAccessor {
+
+    companion object {
+        private var instance: ToDoAccessor? = null
+
+        fun getInstance() = instance ?: synchronized(this) {
+            instance ?: ToDoAccessor().also { instance = it }
+        }
+    }
+
     var realm = Realm.getDefaultInstance()
 
     var nextId: Long = 0
