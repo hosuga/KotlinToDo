@@ -1,9 +1,8 @@
 package com.example.kotlintodo.realm
 
-import android.content.SharedPreferences
 import android.util.Log
-import androidx.preference.PreferenceManager
 import com.example.kotlintodo.db.ToDo
+import com.example.kotlintodo.model.NextId
 import io.realm.OrderedRealmCollection
 import io.realm.Realm
 import io.realm.kotlin.createObject
@@ -12,31 +11,13 @@ import java.lang.Exception
 
 
 object ToDoAccessor {
-    private val sharedPreferences: SharedPreferences
-    private val lastId: Long
-
-    init{
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(Realm.getApplicationContext())
-        lastId = sharedPreferences.getLong("lastId", 0)
-    }
-
-    private val preferencesEditor =  sharedPreferences.edit()
-
     private val realm: Realm = Realm.getDefaultInstance()
-
-    private var nextId = lastId
-        get() {
-            field += 1
-            preferencesEditor.putLong("lastId", field)
-            preferencesEditor.apply()
-            return field
-        }
 
     fun create(title: String): Boolean {
         try {
             realm.beginTransaction()
 //            var todo = realm.createObject<ToDo>(1) // test
-            var todo = realm.createObject<ToDo>(nextId)
+            var todo = realm.createObject<ToDo>(NextId.self)
             todo.title = title
             realm.commitTransaction()
         } catch (e: Exception) {
@@ -49,7 +30,6 @@ object ToDoAccessor {
 
 
     fun getAll(): OrderedRealmCollection<ToDo> {
-        Log.d("lastId:", lastId.toString())
         return realm.where<ToDo>().sort("created").findAll()
     }
 
