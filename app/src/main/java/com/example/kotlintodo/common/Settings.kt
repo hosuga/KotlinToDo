@@ -1,15 +1,14 @@
 package com.example.kotlintodo.common
 
+import android.app.Activity
 import android.content.SharedPreferences
-import android.util.Log
 import androidx.preference.PreferenceManager
-import io.realm.Realm
 
 object Settings {
     private val sharedPreferences: SharedPreferences
 
     init{
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(Realm.getApplicationContext())
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(Activity().applicationContext)
     }
 
     private val preferencesEditor =  sharedPreferences.edit()
