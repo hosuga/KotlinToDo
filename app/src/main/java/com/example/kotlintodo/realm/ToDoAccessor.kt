@@ -2,7 +2,7 @@ package com.example.kotlintodo.realm
 
 import android.util.Log
 import com.example.kotlintodo.db.ToDo
-import com.example.kotlintodo.model.NextId
+import com.example.kotlintodo.common.Settings
 import io.realm.OrderedRealmCollection
 import io.realm.Realm
 import io.realm.kotlin.createObject
@@ -17,7 +17,7 @@ object ToDoAccessor {
         try {
             realm.beginTransaction()
 //            var todo = realm.createObject<ToDo>(1) // test
-            var todo = realm.createObject<ToDo>(NextId.self)
+            var todo = realm.createObject<ToDo>(Settings.nextId)
             todo.title = title
             realm.commitTransaction()
         } catch (e: Exception) {
