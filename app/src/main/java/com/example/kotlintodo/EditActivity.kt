@@ -8,6 +8,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlintodo.model.EditorMode
+import com.example.kotlintodo.realm.ToDoAccessor
 
 class EditActivity : AppCompatActivity() {
     val ERROR_MESSAGES = mapOf(
@@ -33,9 +34,12 @@ class EditActivity : AppCompatActivity() {
 
         saveButton.setOnClickListener {
             val title = editTitleForm.text.toString()
-            Log.d("title", title)
             if (validate((title))) {
-                // TODO: DB更新
+                if (editorMode == EditorMode.CREATE) {
+                    ToDoAccessor.create(title)
+                } else {
+//                    ToDoAccessor.update(, title)
+                }
                 finish()
             }
 
