@@ -1,14 +1,16 @@
 package com.example.kotlintodo.common
 
-import android.app.Activity
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.preference.PreferenceManager
+import com.example.kotlintodo.MainActivity
 
 object Settings {
     private val sharedPreferences: SharedPreferences
 
     init{
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(Activity().applicationContext)
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.context)
+        Log.d("context", MainActivity.context.toString())
     }
 
     private val preferencesEditor =  sharedPreferences.edit()

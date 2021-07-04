@@ -1,5 +1,6 @@
 package com.example.kotlintodo
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -12,8 +13,13 @@ import com.example.kotlintodo.realm.ToDoAccessor
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
+    companion object {
+        var context: Context? = null
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        context = this
 
         setTheme(R.style.AppTheme)
         setContentView(R.layout.activity_main)
