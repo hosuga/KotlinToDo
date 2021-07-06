@@ -10,7 +10,6 @@ object Settings {
 
     init{
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.context)
-        Log.d("context", MainActivity.context.toString())
     }
 
     private val preferencesEditor =  sharedPreferences.edit()
