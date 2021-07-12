@@ -12,14 +12,13 @@ import com.example.kotlintodo.model.EditorMode
 import com.example.kotlintodo.realm.ToDoAccessor
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
+var mainActivityContext: Context? = null
+
 class MainActivity : AppCompatActivity() {
-    companion object {
-        var context: Context? = null
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        context = this
+        mainActivityContext = this
 
         setTheme(R.style.AppTheme)
         setContentView(R.layout.activity_main)
