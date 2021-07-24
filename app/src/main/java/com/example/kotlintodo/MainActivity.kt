@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         val separateLine = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
 
         list.layoutManager = LinearLayoutManager(this)
-        list.adapter = ToDoListAdapter(todos)
+        list.adapter = ToDoListAdapter(application, this, supportFragmentManager, todos)
         list.setHasFixedSize(true)
         list.addItemDecoration(separateLine)
 
