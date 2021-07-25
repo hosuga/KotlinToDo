@@ -59,7 +59,8 @@ class ToDoListAdapter(application: Application, context: Context, supportFragmen
 
         holder.editButton.setOnClickListener {
             val intent = Intent(application, EditActivity::class.java)
-            intent.putExtra("editor_mode", EditorMode.EDIT)
+            intent.putExtra("editorMode", EditorMode.EDIT)
+            intent.putExtra("todoId", todo?.id)
             startActivity(this.context, intent, null)
         }
 

@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
 
         addButton.setOnClickListener {
             val intent = Intent(application, EditActivity::class.java)
-            intent.putExtra("editor_mode", EditorMode.CREATE)
+            intent.putExtra("editorMode", EditorMode.CREATE)
             startActivity(intent)
         }
     }

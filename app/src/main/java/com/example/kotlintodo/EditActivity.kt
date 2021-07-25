@@ -2,7 +2,6 @@ package com.example.kotlintodo
 
 import android.os.Bundle
 import android.text.TextUtils.isEmpty
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
@@ -22,7 +21,8 @@ class EditActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val intent = intent
-        val editorMode = intent.getSerializableExtra("editor_mode") as EditorMode
+        val editorMode = intent.getSerializableExtra("editorMode") as EditorMode
+        val todoId = intent.getSerializableExtra("todoId") as Long?
 
         setTheme(R.style.AppTheme)
         setTitle(editorMode.value)
@@ -32,13 +32,19 @@ class EditActivity : AppCompatActivity() {
         val cancelButton = findViewById<Button>(R.id.cancelButton)
         val editTitleForm = findViewById<EditText>(R.id.editTitleForm)
 
+        if (editorMode == EditorMode.EDIT && todoId != null) {
+            editTitleForm.setText(ToDoAccessor.find(todoId)?.title)
+        }
+
         saveButton.setOnClickListener {
             val title = editTitleForm.text.toString()
             if (validate((title))) {
                 if (editorMode == EditorMode.CREATE) {
                     ToDoAccessor.create(title)
                 } else {
-//                    ToDoAccessor.update(, title)
+                    if (todoId != null) {
+                        ToDoAccessor.update(todoId, title)
+                    }
                 }
                 finish()
             }
