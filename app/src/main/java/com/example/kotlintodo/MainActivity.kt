@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -69,5 +71,27 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("editorMode", EditorMode.CREATE)
             startActivity(intent)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?) : Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item?.itemId) {
+            R.id.actionAllDelete -> {
+                val deleteAllConfirmDialog = ConfirmDialog(
+                    "全件削除しますか？",
+                    "はい",
+                    {ToDoAccessor.deleteAll()},
+                    "いいえ"
+                )
+                deleteAllConfirmDialog.show(supportFragmentManager, "delete_all_confirm_dialog")
+            }
+            else -> null
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }

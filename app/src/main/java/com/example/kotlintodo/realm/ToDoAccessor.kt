@@ -65,4 +65,12 @@ object ToDoAccessor {
         realm.commitTransaction()
     }
 
+    fun deleteAll() {
+        realm.beginTransaction()
+
+        realm.deleteAll()
+
+        realm.commitTransaction()
+    }
+
 }

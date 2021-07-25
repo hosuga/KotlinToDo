@@ -75,7 +75,7 @@ class ToDoListAdapter(application: Application, context: Context, supportFragmen
                 },
                 "いいえ"
             )
-            deleteConfirmDialog.show(this.supportFragmentManager, "cancel_confirm_dialog")
+            deleteConfirmDialog.show(this.supportFragmentManager, "delete_confirm_dialog")
 
         }
 
