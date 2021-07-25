@@ -61,11 +61,11 @@ class ToDoListAdapter(application: Application, context: Context, supportFragmen
             val intent = Intent(application, EditActivity::class.java)
             intent.putExtra("editorMode", EditorMode.EDIT)
             intent.putExtra("todoId", todo?.id)
-            startActivity(this.context, intent, null)
+            startActivity(context, intent, null)
         }
 
         holder.deleteButton.setOnClickListener {
-            val deleteConfirmDialog = ConfirmDialog(
+            ConfirmDialog(
                 "削除しますか？",
                 "はい",
                 {
@@ -74,8 +74,7 @@ class ToDoListAdapter(application: Application, context: Context, supportFragmen
                     }
                 },
                 "いいえ"
-            )
-            deleteConfirmDialog.show(this.supportFragmentManager, "delete_confirm_dialog")
+            ).show(supportFragmentManager, "delete_confirm_dialog")
 
         }
 

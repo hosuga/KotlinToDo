@@ -81,13 +81,12 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
             R.id.actionAllDelete -> {
-                val deleteAllConfirmDialog = ConfirmDialog(
+                ConfirmDialog(
                     "全件削除しますか？",
                     "はい",
                     {ToDoAccessor.deleteAll()},
                     "いいえ"
-                )
-                deleteAllConfirmDialog.show(supportFragmentManager, "delete_all_confirm_dialog")
+                ).show(supportFragmentManager, "delete_all_confirm_dialog")
             }
             else -> null
         }

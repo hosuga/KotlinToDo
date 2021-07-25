@@ -52,13 +52,12 @@ class EditActivity : AppCompatActivity() {
         }
 
         cancelButton.setOnClickListener {
-            val cancelConfirmDialog = ConfirmDialog(
+            ConfirmDialog(
                     "内容は破棄されますが、キャンセルしますか？",
                     "はい",
                     {finish()},
                     "いいえ"
-            )
-            cancelConfirmDialog.show(supportFragmentManager, "cancel_confirm_dialog")
+            ).show(supportFragmentManager, "cancel_confirm_dialog")
         }
     }
 
