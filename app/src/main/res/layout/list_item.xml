@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <com.chauthai.swipereveallayout.SwipeRevealLayout
+    android:id="@+id/swipelayout"
     android:layout_width="match_parent"
     android:layout_height="60dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,7 +11,7 @@
 
     <!-- swipeで表示される箇所 -->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/frameLayout2"
+        android:id="@+id/listItemButtons"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toStartOf="@+id/deleteButton"
@@ -21,24 +22,30 @@
         <Button
             android:id="@+id/editButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="@string/edit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/deleteButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:backgroundTint="@null"
+            android:background="@color/sky_blue"
+            style="?android:attr/borderlessButtonStyle" />
         <!-- TODO: borderless -->
         <!-- TODO: button color -->
         <Button
             android:id="@+id/deleteButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="@string/delete"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/editButton"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:backgroundTint="@null"
+            android:background="@color/tomato"
+            style="?android:attr/borderlessButtonStyle" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- デフォルトで表示される箇所 -->
