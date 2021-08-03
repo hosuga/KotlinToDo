@@ -1,19 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/listItem"
+
+<com.chauthai.swipereveallayout.SwipeRevealLayout
+    android:id="@+id/swipelayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    android:background="@android:color/white"
-    android:orientation="horizontal">
+    android:layout_height="60dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    app:mode="same_level"
+    app:dragEdge="right">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
+    <!-- swipeで表示される箇所 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/listItemButtons"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="TextView"
-        android:textSize="30sp" />
+        app:layout_constraintEnd_toStartOf="@+id/deleteButton"
+        app:layout_constraintStart_toStartOf="@+id/deleteButton">
 
-</LinearLayout>
+        <!-- TODO: borderless -->
+        <!-- TODO: button color -->
+        <Button
+            android:id="@+id/editButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/edit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/deleteButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:backgroundTint="@null"
+            android:background="@color/sky_blue"
+            style="?android:attr/borderlessButtonStyle" />
+        <!-- TODO: borderless -->
+        <!-- TODO: button color -->
+        <Button
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/delete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/editButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:backgroundTint="@null"
+            android:background="@color/tomato"
+            style="?android:attr/borderlessButtonStyle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- デフォルトで表示される箇所 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/listItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_weight="1"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="TextView"
+            android:textSize="30sp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.chauthai.swipereveallayout.SwipeRevealLayout>
